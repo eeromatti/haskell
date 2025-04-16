@@ -38,7 +38,7 @@ double x = x * 2
 -- four.
 
 quadruple :: Integer -> Integer
-quadruple x = todo
+quadruple x = double x * 2
 
 ------------------------------------------------------------------------------
 -- Ex 4: define the function distance. It should take four arguments of
@@ -54,7 +54,8 @@ quadruple x = todo
 --   distance 0 0 1 1  ==>  1.4142135...
 --   distance 1 1 4 5  ==>  5.0
 
-distance = todo
+distance :: Double -> Double -> Double -> Double -> Double
+distance x = sqrt (sqrt (y1-x1) + sqrt (y2-x2))
 
 ------------------------------------------------------------------------------
 -- Ex 5: define the function eeny that returns "eeny" for even inputs
