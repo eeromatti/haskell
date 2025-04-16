@@ -55,7 +55,7 @@ quadruple x = double x * 2
 --   distance 1 1 4 5  ==>  5.0
 
 distance :: Double -> Double -> Double -> Double -> Double
-distance x = sqrt (sqrt (y1-x1) + sqrt (y2-x2))
+distance x1 x2 y1 y2 = sqrt ((y1-x1)^2 + (y2-x2)^2)
 
 ------------------------------------------------------------------------------
 -- Ex 5: define the function eeny that returns "eeny" for even inputs
