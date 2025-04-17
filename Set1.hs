@@ -146,4 +146,4 @@ power n k = n * power n (k-1)
 
 ilog3 :: Integer -> Integer
 ilog3 0 = 0
-ilog3 x = 1 + ilog3 (x div 3)
+ilog3 x = 1 + ilog3 (x `div` 3)
