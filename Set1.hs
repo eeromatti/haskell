@@ -116,6 +116,7 @@ isZero n = False
 -- computes the sum 1+2+...+n
 
 sumTo :: Integer -> Integer
+sumTo 0 = 0
 sumTo n = n + sumTo (n-1)
 
 
