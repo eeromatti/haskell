@@ -153,15 +153,6 @@ isPrime x = isPrimeHelper x 2
 -- Examples:
 --   biggestPrimeAtMost 3 ==> 3
 --   biggestPrimeAtMost 10 ==> 7
-isPrimeHelper :: Integer -> Integer -> Bool
-isPrimeHelper x k
-  | x == 0 || x == 1 = False 
-  | k == x = True
-  | x `mod` k == 0 = False
-  | otherwise = isPrimeHelper x (k+1)
-
-isPrime :: Integer -> Bool
-isPrime x = isPrimeHelper x 2
 
 biggestPrimeAtMost :: Integer -> Integer
 biggestPrimeAtMost x = if isPrime x then x else biggestPrimeAtMost (x-1) 
