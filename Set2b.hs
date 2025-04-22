@@ -82,7 +82,7 @@ myGcd a b
 -- * you can compute the length of a string with the length function
 
 leftpad :: String -> Int -> String
-leftpad str n = if length str >= n then str else leftpad (str++" ") n
+leftpad str n = if length str >= n then str else leftpad (" "++str) n
 
 ------------------------------------------------------------------------------
 -- Ex 5: let's make a countdown for a rocket! Given a number, you
