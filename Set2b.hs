@@ -16,7 +16,7 @@ import Data.List
 -- Hint! pattern matching is your friend.
 
 binomial :: Integer -> Integer -> Integer
-binomial n k = binomial (n-1 k) + binomial (n-1 k-1)
+binomial n k = todo
 
 
 ------------------------------------------------------------------------------
