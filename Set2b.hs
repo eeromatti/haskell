@@ -121,17 +121,26 @@ countdown n = countdown_helper "Ready! " n
 --
 -- Hint: remember the mod function!
 
+smallestDivisorHelper :: Integer -> Integer -> Integer
+smallestDivisorHelper n k = if (n `mod` k) == 0 then k else smallestDivisorHelper n (k+1)
+
 smallestDivisor :: Integer -> Integer
-smallestDivisor = todo
+smallestDivisor n = smallestDivisorHelper n 2
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement a function isPrime that checks if the given number
 -- is a prime number. Use the function smallestDivisor.
 --
 -- Ps. 0 and 1 are not prime numbers
+isPrimeHelper :: Integer -> Integer -> Bool
+isPrimeHelper x k
+  | x == 0 || x == 1 = False 
+  | k == x = True
+  | x `mod` k == 0 = False
+  | otherwise = isPrimeHelper x (k+1)
 
 isPrime :: Integer -> Bool
-isPrime = todo
+isPrime x = isPrimeHelper x 2
 
 ------------------------------------------------------------------------------
 -- Ex 8: implement a function biggestPrimeAtMost that returns the
@@ -144,6 +153,15 @@ isPrime = todo
 -- Examples:
 --   biggestPrimeAtMost 3 ==> 3
 --   biggestPrimeAtMost 10 ==> 7
+isPrimeHelper :: Integer -> Integer -> Bool
+isPrimeHelper x k
+  | x == 0 || x == 1 = False 
+  | k == x = True
+  | x `mod` k == 0 = False
+  | otherwise = isPrimeHelper x (k+1)
+
+isPrime :: Integer -> Bool
+isPrime x = isPrimeHelper x 2
 
 biggestPrimeAtMost :: Integer -> Integer
-biggestPrimeAtMost = todo
+biggestPrimeAtMost x = if isPrime x then x else biggestPrimeAtMost (x-1) 
