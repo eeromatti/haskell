@@ -16,7 +16,8 @@ import Data.List
 -- Hint! pattern matching is your friend.
 
 binomial :: Integer -> Integer -> Integer
-binomial = todo
+binomial n k = binomial (n-1 k) + binomial (n-1 k-1)
+
 
 ------------------------------------------------------------------------------
 -- Ex 2: implement the odd factorial function. Odd factorial is like
@@ -27,7 +28,8 @@ binomial = todo
 --   oddFactorial 6 ==> 5*3*1 ==> 15
 
 oddFactorial :: Integer -> Integer
-oddFactorial = todo
+oddFactorial 1 = 1
+oddFactorial n = if even n then oddFactorial (n-1) else n * oddFactorial (n-1)
 
 ------------------------------------------------------------------------------
 -- Ex 3: implement the Euclidean Algorithm for finding the greatest
@@ -59,7 +61,12 @@ oddFactorial = todo
 -- * https://en.wikipedia.org/wiki/Euclidean_algorithm
 
 myGcd :: Integer -> Integer -> Integer
-myGcd = todo
+myGcd a b
+  | a == 0 = b
+  | b == 0 = a
+  | a < b = myGcd a (b-a)
+  | otherwise = myGcd (a-b) b
+  
 
 ------------------------------------------------------------------------------
 -- Ex 4: Implement the function leftpad which adds space characters
@@ -75,7 +82,7 @@ myGcd = todo
 -- * you can compute the length of a string with the length function
 
 leftpad :: String -> Int -> String
-leftpad = todo
+leftpad str n = if length str >= n then str else leftpad (str++" ") n
 
 ------------------------------------------------------------------------------
 -- Ex 5: let's make a countdown for a rocket! Given a number, you
@@ -90,8 +97,14 @@ leftpad = todo
 -- * you can use the show function to convert a number into a string
 -- * you'll probably need a recursive helper function
 
+countdown_helper :: String -> Integer -> String
+countdown_helper str n = 
+  if n > 0 
+    then countdown_helper (str++show n++"... ") (n-1) 
+    else str++"Liftoff!"
+
 countdown :: Integer -> String
-countdown = todo
+countdown n = countdown_helper "Ready! " n
 
 ------------------------------------------------------------------------------
 -- Ex 6: implement the function smallestDivisor that returns the
