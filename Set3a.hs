@@ -103,7 +103,6 @@ palindrome str = if str == reverse str then True else False
 --
 -- Example:
 --   capitalize "goodbye cruel world" ==> "Goodbye Cruel World"
-import Data.Char 
 
 capitalizeFirst :: [String] -> String
 capitalizeFirst list = unwords (map cap list)
