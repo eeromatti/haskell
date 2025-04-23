@@ -171,8 +171,10 @@ while check update value = if check value then while check update (update value)
 -- Hint! Remember the case-of expression from lecture 2.
 
 whileRight :: (a -> Either b a) -> a -> b
-whileRight check x = todo
-
+whileRight check x = case check x of
+  Left result -> result
+  Right x -> whileRight check x
+                                      
 -- for the whileRight examples:
 -- step k x doubles x if it's less than k
 step :: Int -> Int -> Either Int Int
@@ -195,8 +197,9 @@ bomb x = Right (x-1)
 -- Hint! This is a great use for list comprehensions
 
 joinToLength :: Int -> [String] -> [String]
-joinToLength = todo
-
+joinToLength len list = [ a ++ b | a <- list, b <- list, length (a ++ b) == len ]
+                        
+ 
 ------------------------------------------------------------------------------
 -- Ex 10: implement the operator +|+ that returns a list with the first
 -- elements of its input lists.
@@ -208,6 +211,9 @@ joinToLength = todo
 --   [1,2,3] +|+ [4,5,6]  ==> [1,4]
 --   [] +|+ [True]        ==> [True]
 --   [] +|+ []            ==> []
+
+(+|+) :: [a] -> [a] -> [a]
+ls +|+ li = [ls !! 0] ++ [li !! 0]
 
 
 ------------------------------------------------------------------------------
@@ -225,7 +231,7 @@ joinToLength = todo
 --   sumRights [Left "bad!", Left "missing"]         ==>  0
 
 sumRights :: [Either a Int] -> Int
-sumRights = todo
+sumRights list = sum [x | Right x <- list]
 
 ------------------------------------------------------------------------------
 -- Ex 12: recall the binary function composition operation
