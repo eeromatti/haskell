@@ -126,8 +126,11 @@ capitalize str = capitalizeFirst (words str)
 --   * k^max > max
 --   * the function takeWhile
 
+iterate :: Int -> Int 
+iterate = takeWhile (\k -> k^x < max)
+
 powers :: Int -> Int -> [Int]
-powers k max = todo
+powers k max = takeWhile (< max) [k^x | x <- [0..]]
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement a functional while loop. While should be a function
@@ -150,7 +153,8 @@ powers k max = todo
 --     ==> Avvt
 
 while :: (a->Bool) -> (a->a) -> a -> a
-while check update value = todo
+while check update value = if check value then while check update (update value) else value
+
 
 ------------------------------------------------------------------------------
 -- Ex 8: another version of a while loop. This time, the check
