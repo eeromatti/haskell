@@ -126,9 +126,6 @@ capitalize str = capitalizeFirst (words str)
 --   * k^max > max
 --   * the function takeWhile
 
-iterate :: Int -> Int 
-iterate = takeWhile (\k -> k^x < max)
-
 powers :: Int -> Int -> [Int]
 powers k max = takeWhile (< max) [k^x | x <- [0..]]
 
