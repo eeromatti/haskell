@@ -127,7 +127,7 @@ capitalize str = capitalizeFirst (words str)
 --   * the function takeWhile
 
 powers :: Int -> Int -> [Int]
-powers k max = takeWhile (< max) [k^x | x <- [0..]]
+powers k max = takeWhile (<= max) [k^x | x <- [0..]]
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement a functional while loop. While should be a function
