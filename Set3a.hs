@@ -213,7 +213,11 @@ joinToLength len list = [ a ++ b | a <- list, b <- list, length (a ++ b) == len 
 --   [] +|+ []            ==> []
 
 (+|+) :: [a] -> [a] -> [a]
-ls +|+ li = [ls !! 0] ++ [li !! 0]
+ls +|+ li
+  | length ls /= 0 && length li /= 0 = [ls !! 0] ++ [li !! 0]
+  | length ls /= 0 = [ls !! 0]
+  | length li /= 0 = [li !! 0]
+  | otherwise = []
 
 
 ------------------------------------------------------------------------------
