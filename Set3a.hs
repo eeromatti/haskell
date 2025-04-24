@@ -274,7 +274,7 @@ multiCompose (f:fs) x = multiCompose fs (f x)
 --   multiApp id [head, (!!2), last] "axbxc" ==> ['a','b','c'] i.e. "abc"
 --   multiApp sum [head, (!!2), last] [1,9,2,9,3] ==> 6
 
-multiApp :: ([a] -> b) -> [a -> a] -> a -> b
+multiApp :: ([b] -> c) -> [a -> b] -> a -> c
 multiApp g fs x = g (map (\f -> f x) fs)
         
 
