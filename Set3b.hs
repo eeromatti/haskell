@@ -70,7 +70,10 @@ itersums acc (x:xs) = let new = acc + x
 --   mylast 0 [1,2,3] ==> 3
 
 mylast :: a -> [a] -> a
-mylast def xs = todo
+mylast def []   = def
+mylast def [x]  = x
+mylast def (_:xs) = mylast def xs
+
 
 ------------------------------------------------------------------------------
 -- Ex 4: safe list indexing. Define a function indexDefault so that
@@ -88,7 +91,13 @@ mylast def xs = todo
 --   indexDefault ["a","b","c"] (-1) "d" ==> "d"
 
 indexDefault :: [a] -> Int -> a -> a
-indexDefault xs i def = todo
+indexDefault [] _ def = def
+indexDefault (x:xs) i def
+  | i < 0     = def
+  | i == 0    = x
+  | otherwise = indexDefault xs (i - 1) def
+
+
 
 ------------------------------------------------------------------------------
 -- Ex 5: define a function that checks if the given list is in
