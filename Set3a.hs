@@ -252,8 +252,10 @@ sumRights list = sum [x | Right x <- list]
 --   multiCompose [(+1), (2^), (3*)] 0 ==> 2
 
 multiCompose :: [a -> a] -> a -> a
-multiCompose []     x = x
-multiCompose (f:fs) x = multiCompose fs (f x)
+multiCompose fs x = multiCompose' (reverse fs) x
+  where
+    multiCompose' [] x = x
+    multiCompose' (f:fs) x = multiCompose' fs (f x)
 
 ------------------------------------------------------------------------------
 -- Ex 13: let's consider another way to compose multiple functions. Given
