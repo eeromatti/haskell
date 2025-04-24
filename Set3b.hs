@@ -39,7 +39,8 @@ import Mooc.Todo
 --   buildList 7 0 3 ==> [3]
 
 buildList :: Int -> Int -> Int -> [Int]
-buildList start count end = todo
+buildList x 0 y = [y]
+buildList x n y = x : buildList x (n-1) y 
 
 ------------------------------------------------------------------------------
 -- Ex 2: given i, build the list of sums [1, 1+2, 1+2+3, .., 1+2+..+i]
@@ -49,7 +50,13 @@ buildList start count end = todo
 -- Ps. you'll probably need a recursive helper function
 
 sums :: Int -> [Int]
-sums i = todo
+sums i = itersums 0 [1..i]
+
+itersums :: Int -> [Int] -> [Int]
+itersums _ [] = []
+itersums acc (x:xs) = let new = acc + x
+  in new : itersums new xs
+
 
 ------------------------------------------------------------------------------
 -- Ex 3: define a function mylast that returns the last value of the
