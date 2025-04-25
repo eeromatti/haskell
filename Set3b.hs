@@ -113,7 +113,9 @@ indexDefault (x:xs) i def
 --   sorted [7,2,7] ==> False
 
 sorted :: [Int] -> Bool
-sorted xs = todo
+sorted [] = True
+sorted [x] = True
+sorted (x:xs) = if x > (xs !! 0) then False else sorted xs
 
 ------------------------------------------------------------------------------
 -- Ex 6: compute the partial sums of the given list like this:
@@ -125,7 +127,13 @@ sorted xs = todo
 -- Use pattern matching and recursion (and the list constructors : and [])
 
 sumsOf :: [Int] -> [Int]
-sumsOf xs = todo
+sumsOf [] = []
+sumsOf xs = itersums 0 xs
+
+itersums :: Int -> [Int] -> [Int]
+itersums _ [] = []
+itersums acc (x:xs) = let new = acc + x
+  in new : itersums new xs
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement the function merge that merges two sorted lists of
