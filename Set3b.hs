@@ -174,7 +174,10 @@ merge (x:xs) (y:ys)
 --     ==> ("Mouse",8)
 
 mymaximum :: (a -> a -> Bool) -> a -> [a] -> a
-mymaximum bigger initial xs = todo
+mymaximum _ current [] = current
+mymaximum bigger current (x:xs)
+  | bigger x current = mymaximum bigger x xs
+  | otherwise         = mymaximum bigger current xs
 
 ------------------------------------------------------------------------------
 -- Ex 9: define a version of map that takes a two-argument function
