@@ -115,7 +115,7 @@ indexDefault (x:xs) i def
 sorted :: [Int] -> Bool
 sorted [] = True
 sorted [x] = True
-sorted (x:xs) = if x > (xs !! 0) then False else sorted xs
+sorted (x:y:xs) = x <= y && sorted (y:xs)
 
 ------------------------------------------------------------------------------
 -- Ex 6: compute the partial sums of the given list like this:
