@@ -128,12 +128,12 @@ sorted (x:xs) = if x > (xs !! 0) then False else sorted xs
 
 sumsOf :: [Int] -> [Int]
 sumsOf [] = []
-sumsOf xs = itersums 0 xs
+sumsOf xs = itersumss 0 xs
 
-itersums :: Int -> [Int] -> [Int]
-itersums _ [] = []
-itersums acc (x:xs) = let new = acc + x
-  in new : itersums new xs
+itersumss :: Int -> [Int] -> [Int]
+itersumss _ [] = []
+itersumss acc (x:xs) = let new = acc + x
+  in new : itersumss new xs
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement the function merge that merges two sorted lists of
