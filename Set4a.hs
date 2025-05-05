@@ -174,7 +174,10 @@ winner scores player1 player2 =
 --     ==> Map.fromList [(False,3),(True,1)]
 
 freqs :: (Eq a, Ord a) => [a] -> Map.Map a Int
-freqs xs = todo
+freqs xs = foldr (\x m -> Map.alter update x m) Map.empty xs
+  where
+    update Nothing  = Just 1
+    update (Just n) = Just (n + 1) 
 
 ------------------------------------------------------------------------------
 -- Ex 10: recall the withdraw example from the course material. Write a
