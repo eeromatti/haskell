@@ -88,6 +88,11 @@ concatHelper x xs = x ++ xs
 --   largest [1,3,2] ==> [3]
 --   largest [1,3,2,3] ==> [3,3]
 
+largest :: [Int] -> [Int]
+largest xs = foldr largestHelper [] xs
+
+largestHelper = todo
+
 
 ------------------------------------------------------------------------------
 -- Ex 6: get the first element of a list with a fold. Define
