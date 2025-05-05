@@ -54,10 +54,7 @@ allEqual (x:y:xs)
 --   distinct [1,2] ==> True
 
 distinct :: Eq a => [a] -> Bool
-distinct [] = True
-distinct (x:xs)
-  | x `elem` xs = False
-  | otherwise   = distinct xs
+distinct = todo
 
 ------------------------------------------------------------------------------
 -- Ex 3: implement the function middle that returns the middle value
@@ -70,9 +67,7 @@ distinct (x:xs)
 --   middle 'b' 'a' 'c'  ==> 'b'
 --   middle 1 7 3        ==> 3
 
-middle :: Ord a => a -> a -> a -> a
-middle x y z = todo
--- sort [x, y, z] !! 1 
+middle = todo
 
 ------------------------------------------------------------------------------
 -- Ex 4: return the range of an input list, that is, the difference
@@ -87,9 +82,8 @@ middle x y z = todo
 --   rangeOf [4,2,1,3]          ==> 3
 --   rangeOf [1.5,1.0,1.1,1.2]  ==> 0.5
 
-rangeOf :: (Ord a, Num a) => [a] -> a
-rangeOf xs = todo
---maximum xs - minimum xs
+rangeOf :: [a] -> a
+rangeOf = todo
 
 ------------------------------------------------------------------------------
 -- Ex 5: given a (non-empty) list of (non-empty) lists, return the longest
@@ -107,9 +101,7 @@ rangeOf xs = todo
 --   longest [[1,2,3],[4,5],[6]] ==> [1,2,3]
 --   longest ["bcd","def","ab"] ==> "bcd"
 
-longest :: Ord a => [[a]] -> [[a]]
 longest = todo
--- sortBy (comparing length)
 
 ------------------------------------------------------------------------------
 -- Ex 6: Implement the function incrementKey, that takes a list of
@@ -125,9 +117,8 @@ longest = todo
 --   incrementKey True [(True,1),(False,3),(True,4)] ==> [(True,2),(False,3),(True,5)]
 --   incrementKey 'a' [('a',3.4)] ==> [('a',4.4)]
 
-incrementKey :: (Eq k, Num v) => k -> [(k, v)] -> [(k, v)]
-incrementKey key = todo
--- map (\(k, v) -> if k == key then (k, v + 1) else (k, v))
+incrementKey :: k -> [(k,v)] -> [(k,v)]
+incrementKey = todo
 
 ------------------------------------------------------------------------------
 -- Ex 7: compute the average of a list of values of the Fractional
