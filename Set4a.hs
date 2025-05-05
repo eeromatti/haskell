@@ -105,8 +105,8 @@ rangeOf xs = maximum xs - minimum xs
 --   longest [[1,2,3],[4,5],[6]] ==> [1,2,3]
 --   longest ["bcd","def","ab"] ==> "bcd"
 
-longest :: Ord a => [[a]] -> [[a]]
-longest = sortBy (comparing length)
+-- longest :: Ord a => [[a]] -> [[a]]
+-- longest = sortBy (comparing length)
 
 ------------------------------------------------------------------------------
 -- Ex 6: Implement the function incrementKey, that takes a list of
@@ -122,8 +122,8 @@ longest = sortBy (comparing length)
 --   incrementKey True [(True,1),(False,3),(True,4)] ==> [(True,2),(False,3),(True,5)]
 --   incrementKey 'a' [('a',3.4)] ==> [('a',4.4)]
 
-incrementKey :: (Eq k, Num v) => k -> [(k, v)] -> [(k, v)]
-incrementKey key = map (\(k, v) -> if k == key then (k, v + 1) else (k, v))
+-- incrementKey :: (Eq k, Num v) => k -> [(k, v)] -> [(k, v)]
+-- incrementKey key = map (\(k, v) -> if k == key then (k, v + 1) else (k, v))
 
 ------------------------------------------------------------------------------
 -- Ex 7: compute the average of a list of values of the Fractional
