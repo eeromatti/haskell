@@ -88,7 +88,11 @@ concatHelper = todo
 largest :: [Int] -> [Int]
 largest xs = foldr largestHelper [] xs
 
-largestHelper = todo
+largestHelper :: Int -> [Int] -> [Int]
+largestHelper x [] = [x]
+largestHelper x (y:ys)
+  | x > y     = x : ys
+  | otherwise = y : ys
 
 
 ------------------------------------------------------------------------------
