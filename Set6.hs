@@ -25,10 +25,12 @@ instance Eq Country where
 -- Remember minimal complete definitions!
 
 instance Ord Country where
-  compare = todo -- implement me?
-  (<=) = todo -- and me?
-  min = todo -- and me?
-  max = todo -- and me?
+  Finland     <= _           = True
+  Norway      <= Norway      = True
+  Norway      <= Switzerland = True
+  Switzerland <= Switzerland = True
+  _           <= _           = False
+
 
 ------------------------------------------------------------------------------
 -- Ex 3: Implement an Eq instance for the type Name which contains a String.
