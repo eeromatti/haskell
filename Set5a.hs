@@ -26,8 +26,8 @@ data BusTicket
   | MonthlyTicket Month
 
 data Month
-  = January | February | March | April | May | June
-  | July | August | September | October | November | December
+  = "January" | "February" | "March" | "April" | "May" | "June"
+  | "July" | "August" | "September" | "October" | "November" | "December"
 
 ------------------------------------------------------------------------------
 -- Ex 3: Here's the definition for a datatype ShoppingEntry that
