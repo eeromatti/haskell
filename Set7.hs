@@ -136,6 +136,23 @@ reverseNonEmpty (x :| xs) = let reversedTail = reverse xs
 -- velocity (Distance 50 <> Distance 10) (Time 1 <> Time 2)
 --    ==> Velocity 20
 
+data Distance = Distance Double
+  deriving (Show, Eq)
+
+data Time = Time Double
+  deriving (Show, Eq)
+
+data Velocity = Velocity Double
+  deriving (Show, Eq)
+
+instance Semigroup Distance where
+  Distance d1 <> Distance d2 = Distance (d1 + d2)
+
+instance Semigroup Time where
+  Time t1 <> Time t2 = Time (t1 + t2)
+
+instance Semigroup Velocity where
+  Velocity v1 <> Velocity v2 = Velocity (v1 + v2)
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement a Monoid instance for the Set type from exercise 2.
