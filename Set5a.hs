@@ -21,7 +21,7 @@ data Vehicle = Bike | Bus | Tram | Train
 --  - MonthlyTicket "January"
 --  - MonthlyTicket "December"
 
-data Ticket
+data BusTicket
   = SingleTicket
   | MonthlyTicket Month
 
