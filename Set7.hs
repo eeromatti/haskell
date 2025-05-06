@@ -103,9 +103,10 @@ step Start AddFlour = Start
 step Start AddSugar = Start
 step Start Mix = Finished
 step Start Bake = Error
+
+step Finished Bake = Finished
 step Finished _ = Error
 step Error _ = Error
-
 
 -- do not edit this
 bake :: [Event] -> State
