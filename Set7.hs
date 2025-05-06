@@ -97,7 +97,15 @@ data Event = AddEggs | AddFlour | AddSugar | Mix | Bake
 data State = Start | Error | Finished
   deriving (Eq,Show)
 
-step = todo
+step :: State -> Event -> State
+step Start AddEggs = Start
+step Start AddFlour = Start
+step Start AddSugar = Start
+step Start Mix = Finished
+step Start Bake = Error
+step Finished _ = Error
+step Error _ = Error
+
 
 -- do not edit this
 bake :: [Event] -> State
