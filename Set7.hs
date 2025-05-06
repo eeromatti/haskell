@@ -56,7 +56,7 @@ member :: Eq a => a -> Set a -> Bool
 member x (Set xs) = x `elem` xs
 
 -- add a member to a set
-add :: a -> Set a -> Set a
+add :: (Eq a, Ord a) => a -> Set a -> Set a
 add x (Set xs)
   | x `elem` xs = Set xs
   | otherwise   = Set (insert x xs)
