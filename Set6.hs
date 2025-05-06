@@ -25,11 +25,11 @@ instance Eq Country where
 -- Remember minimal complete definitions!
 
 instance Ord Country where
-  Finland     <= _           = True
-  Norway      <= Norway      = True
-  Norway      <= Switzerland = True
+  Finland <= _ = True
+  Norway <= Norway = True
+  Norway <= Switzerland = True
   Switzerland <= Switzerland = True
-  _           <= _           = False
+  _ <= _ = False
 
 
 ------------------------------------------------------------------------------
