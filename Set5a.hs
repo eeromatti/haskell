@@ -116,11 +116,11 @@ getY (PositionEntry _ y) = y
 
 -- up increases the y value of a position by one
 up :: Position -> Position
-up y' (PositionEntry _ y) = PositionEntry x y' 
+up PositionEntry _ y = PositionEntry x (y+1) 
 
 -- right increases the x value of a position by one
 right :: Position -> Position
-right x' (PositionEntry x _) = PositionEntry x' y
+right PositionEntry x _ = PositionEntry (x+1) y
 
 ------------------------------------------------------------------------------
 -- Ex 6: Here's a datatype that represents a student. A student can
