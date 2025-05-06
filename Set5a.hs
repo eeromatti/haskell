@@ -104,7 +104,7 @@ data Position = PositionEntry Int Int
 
 -- origin is a Position value with x and y set to 0
 origin :: Position
-origin x y = PositionEntry 0 0
+origin = PositionEntry 0 0
 
 -- getX returns the x of a Position
 getX :: Position -> Int
