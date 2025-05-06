@@ -39,7 +39,9 @@ treeSize (Node _ left right) = 1 + treeSize left + treeSize right
 --   treeMax (Node 3 (Node 5 Empty Empty) (Node 4 Empty Empty))  ==>  5
 
 treeMax :: Tree Int -> Int
-treeMax = todo
+treeMax Empty = 0
+treeMax (Node val left right) = maximum [val, treeMax left, treeMax right]
+
 
 ------------------------------------------------------------------------------
 -- Ex 4: implement a function that checks if all tree values satisfy a
