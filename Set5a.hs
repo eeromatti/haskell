@@ -82,7 +82,7 @@ getName (PersonEntry _ name) = name
 
 -- getAge returns the age of the person
 getAge :: Person -> Int
-getAge (PersonEntry age _ = age
+getAge (PersonEntry age _) = age
 
 -- setName takes a person and returns a new person with the name changed
 setName :: String -> Person -> Person
