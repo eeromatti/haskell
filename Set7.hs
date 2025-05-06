@@ -97,15 +97,24 @@ data Event = AddEggs | AddFlour | AddSugar | Mix | Bake
 data State = Start | Error | Finished
   deriving (Eq,Show)
 
-step :: State -> Event -> State
-step Start AddEggs = Start
-step Start AddFlour = Start
-step Start AddSugar = Start
-step Start Mix = Finished
-step Start Bake = Error
+allIngredientsAdded :: [String] -> Bool
+allIngredientsAdded ingredients = "eggs" `elem` ingredients && "flour" `elem` ingredients && "sugar" `elem` ingredients
 
+step :: State -> Event -> State
+-- In Start state:
+step (Start ingredients) AddEggs = Start ("eggs" : ingredients)
+step (Start ingredients) AddFlour = Start ("flour" : ingredients)
+step (Start ingredients) AddSugar = Start ("sugar" : ingredients)
+step (Start ingredients) Mix
+  | allIngredientsAdded ingredients = Finished
+  | otherwise = Error
+step (Start _) Bake = Error
+
+-- In Finished state:
 step Finished Bake = Finished
 step Finished _ = Error
+
+-- In Error state:
 step Error _ = Error
 
 -- do not edit this
