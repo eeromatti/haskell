@@ -53,7 +53,9 @@ treeMax (Node val left right) = maximum [val, treeMax left, treeMax right]
 --   allValues (>0) (Node 1 Empty (Node 0 Empty Empty))  ==>  False
 
 allValues :: (a -> Bool) -> Tree a -> Bool
-allValues condition tree = todo
+allValues _ Empty = True
+allValues condition (Node val left right) =
+  condition val && allValues condition left && allValues condition right 
 
 ------------------------------------------------------------------------------
 -- Ex 5: implement map for trees.
