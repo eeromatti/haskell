@@ -132,8 +132,13 @@ renderListExample = renderList justADot (9,11) (9,11)
 --      ["ff69b4","ff69b4","ff69b4"],
 --      ["000000","000000","000000"]]
 
-dotAndLine :: Picture
-dotAndLine = todo
+dotAndLine :: Picture f
+dotAndLine (Coord x y)
+  | x == 10 && y == 10 = white
+  | y == 8             = pink
+  | otherwise          = black
+
+
 ------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
@@ -166,10 +171,12 @@ dotAndLine = todo
 --          ["7f0000","7f0000","7f0000"]]
 
 blendColor :: Color -> Color -> Color
-blendColor = todo
+blendColor (r1, g1, b1) (r2, g2, b2) =
+  (blend r1 r2, blend g1 g2, blend b1 b2)
+  where blend c1 c2 = (c1 + c2) / 2
 
 combine :: (Color -> Color -> Color) -> Picture -> Picture -> Picture
-combine = todo
+combine f pic1 pic2 = \coord -> f (pic1 coord) (pic2 coord)
 
 ------------------------------------------------------------------------------
 
