@@ -133,10 +133,12 @@ renderListExample = renderList justADot (9,11) (9,11)
 --      ["000000","000000","000000"]]
 
 dotAndLine :: Picture
-dotAndLine (Coord x y)
-  | x == 10 && y == 10 = white
-  | y == 8             = pink
-  | otherwise          = black
+dotAndLine = Picture f
+  where
+    f (Coord x y)
+      | x == 10 && y == 10 = white
+      | y == 8             = pink
+      | otherwise          = black
 
 
 ------------------------------------------------------------------------------
