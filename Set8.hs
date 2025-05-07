@@ -173,9 +173,10 @@ dotAndLine = Picture f
 --          ["7f0000","7f0000","7f0000"]]
 
 blendColor :: Color -> Color -> Color
-blendColor (r1, g1, b1) (r2, g2, b2) =
-  (average r1 r2, average g1 g2, average b1 b2)
-  where average a b = (a + b) `div` 2
+blendColor (Color r1 g1 b1) (Color r2 g2 b2) =
+  Color (avg r1 r2) (avg g1 g2) (avg b1 b2)
+  where
+    avg a b = (a + b) `div` 2
 
 combine :: (Color -> Color -> Color) -> Picture -> Picture -> Picture
 combine f (Picture p1) (Picture p2) = Picture p
