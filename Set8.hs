@@ -136,7 +136,7 @@ dotAndLine :: Picture
 dotAndLine = Picture f
   where
     f (Coord x y)
-      | x == 10 && y == 10 = white
+      | x == 3 && y == 4 = white
       | y == 8             = pink
       | otherwise          = black
 
