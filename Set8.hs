@@ -252,9 +252,9 @@ exampleCircle = fill red (circle 80 100 200)
 --        ["000000","000000","000000","000000","000000","000000"]]
 
 rectangle :: Int -> Int -> Int -> Int -> Shape
-rectangle x0 y0 w h = Shape (\(Coord x y) ->
-  x >= (x0 - w `div` 2) && x <= (x0 + w `div` 2) &&
-  y >= (y0 - h `div` 2) && y <= (y0 + h `div` 2))
+rectangle x0 y0 w h = Shape f
+  where
+    f (Coord x y) = x >= x0 && x < x0 + w && y >= y0 && y < y0 + h
 
 ------------------------------------------------------------------------------
 
