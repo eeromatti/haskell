@@ -174,11 +174,13 @@ dotAndLine = Picture f
 
 blendColor :: Color -> Color -> Color
 blendColor (r1, g1, b1) (r2, g2, b2) =
-  (blend r1 r2, blend g1 g2, blend b1 b2)
-  where blend c1 c2 = (c1 + c2) / 2
+  (average r1 r2, average g1 g2, average b1 b2)
+  where average a b = (a + b) `div` 2
 
 combine :: (Color -> Color -> Color) -> Picture -> Picture -> Picture
-combine f pic1 pic2 = \coord -> f (pic1 coord) (pic2 coord)
+combine f (Picture p1) (Picture p2) = Picture p
+  where
+    p coord = f (p1 coord) (p2 coord)
 
 ------------------------------------------------------------------------------
 
