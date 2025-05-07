@@ -253,8 +253,8 @@ exampleCircle = fill red (circle 80 100 200)
 
 rectangle :: Int -> Int -> Int -> Int -> Shape
 rectangle x0 y0 w h = Shape (\(Coord x y) ->
-  abs (x - x0) <= w `div` 2 &&
-  abs (y - y0) <= h `div` 2)
+  x >= (x0 - w `div` 2) && x <= (x0 + w `div` 2) &&
+  y >= (y0 - h `div` 2) && y <= (y0 + h `div` 2))
 ------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
