@@ -47,10 +47,10 @@ type Col   = Int
 type Coord = (Row, Col)
 
 nextRow :: Coord -> Coord
-nextRow (i,j) = todo
+nextRow (i,j) = (i+1, 1)
 
 nextCol :: Coord -> Coord
-nextCol (i,j) = todo
+nextCol (i,j) = (i, j+1)
 
 --------------------------------------------------------------------------------
 -- Ex 2: Implement the function prettyPrint that, given the size of
@@ -103,7 +103,14 @@ nextCol (i,j) = todo
 type Size = Int
 
 prettyPrint :: Size -> [Coord] -> String
-prettyPrint = todo
+prettyPrint n coords = go 1 1
+    where 
+        go i j
+            | i > n = ""
+            | j > n = "\n" ++ go (i + 1) 1
+            | (i, j) `elem` coords = "Q" ++ go i (j + 1)
+            | otherwise = "." ++ go i (j + 1)
+    
 
 --------------------------------------------------------------------------------
 -- Ex 3: The task in this exercise is to define the relations sameRow, sameCol,
@@ -127,16 +134,22 @@ prettyPrint = todo
 --   sameAntidiag (500,5) (5,500) ==> True
 
 sameRow :: Coord -> Coord -> Bool
-sameRow (i,j) (k,l) = todo
+sameRow (i,j) (k,l) = if i == k then True else False 
 
 sameCol :: Coord -> Coord -> Bool
-sameCol (i,j) (k,l) = todo
+sameCol (i,j) (k,l) = if j == l then True else False
 
 sameDiag :: Coord -> Coord -> Bool
-sameDiag (i,j) (k,l) = todo
+sameDiag (i, j) (k, l) 
+    | i == k && j == l = True
+    | fromIntegral (l - j) / fromIntegral (k - i) == 1 = True
+    | otherwise = False 
 
 sameAntidiag :: Coord -> Coord -> Bool
-sameAntidiag (i,j) (k,l) = todo
+sameAntidiag (i, j) (k, l) 
+    | i == k && j == l = True
+    | fromIntegral (l - j) / fromIntegral (k - i) == -1 = True
+    | otherwise = False
 
 --------------------------------------------------------------------------------
 -- Ex 4: In chess, a queen may capture another piece in the same row, column,
@@ -190,8 +203,19 @@ sameAntidiag (i,j) (k,l) = todo
 type Candidate = Coord
 type Stack     = [Coord]
 
+inDanger :: Coord -> Coord -> Bool
+inDanger a b 
+    | sameRow a b == True = True
+    | sameCol a b == True = True
+    | sameDiag a b == True = True
+    | sameAntidiag a b == True = True
+    | otherwise = False
+
 danger :: Candidate -> Stack -> Bool
-danger = todo
+danger _ [] = False
+danger c (x:xs)
+    | inDanger c x = True
+    | otherwise = danger c xs
 
 --------------------------------------------------------------------------------
 -- Ex 5: In this exercise, the task is to write a modified version of
@@ -226,7 +250,16 @@ danger = todo
 -- solution to this version. Any working solution is okay in this exercise.)
 
 prettyPrint2 :: Size -> Stack -> String
-prettyPrint2 = todo
+prettyPrint2 n coords = go 1 1
+    where
+        go i j 
+            | i > n = ""
+            | j > n = "\n" ++ go (i + 1) 1
+            | (i, j) `elem` coords = "Q" ++ go i (j + 1)
+            | danger (i,j) coords = "#" ++ go i (j + 1)
+            | otherwise = "." ++ go i (j + 1)
+
+
 
 --------------------------------------------------------------------------------
 -- Ex 6: Now that we can check if a piece can be safely placed into a square in
