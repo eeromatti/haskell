@@ -1,1 +1,1 @@
-[{"number":1,"name":"|||","outcome":"Pass"},{"number":2,"name":"boolLength","outcome":"Pass"},{"number":3,"name":"validate","outcome":"Todo"},{"number":4,"name":"myseq","outcome":"Todo"}]
+[{"number":1,"name":"appendAll","outcome":"Pass"},{"number":2,"name":"swapIORefs","outcome":"Pass"},{"number":3,"name":"doubleCall","outcome":"Pass"},{"number":4,"name":"composeIO","outcome":"Pass"},{"number":5,"name":"hFetchLines","outcome":"Todo"},{"number":6,"name":"hSelectLines","outcome":"Todo"},{"number":7,"name":"interact'","outcome":"Todo"}]

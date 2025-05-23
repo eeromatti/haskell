@@ -20,7 +20,8 @@ import Mooc.Todo
 --   "xfoobarquux"
 
 appendAll :: IORef String -> [String] -> IO ()
-appendAll = todo
+appendAll r xs = do
+    forM_ xs $ \x -> modifyIORef r (++ x)
 
 ------------------------------------------------------------------------------
 -- Ex 2: Given two IORefs, swap the values stored in them.
@@ -35,7 +36,11 @@ appendAll = todo
 --   "x"
 
 swapIORefs :: IORef a -> IORef a -> IO ()
-swapIORefs = todo
+swapIORefs a b = do
+    valA <- readIORef a
+    valB <- readIORef b
+    writeIORef a valB
+    writeIORef b valA
 
 ------------------------------------------------------------------------------
 -- Ex 3: sometimes one bumps into IO operations that return IO
@@ -51,7 +56,7 @@ swapIORefs = todo
 --   - doubleCall (return (return 3)) is the same as return 3
 --
 --   - let op :: IO (IO [String])
---         op = do l <- readLn
+--         op = do l <- readL
 --                 return $ replicateM l getLine
 --     in doubleCall op
 --
@@ -61,7 +66,11 @@ swapIORefs = todo
 --        replicateM l getLine
 
 doubleCall :: IO (IO a) -> IO a
-doubleCall op = todo
+doubleCall op = do
+    o <- op
+    o
+
+        
 
 ------------------------------------------------------------------------------
 -- Ex 4: implement the analogue of function composition (the (.)
@@ -80,7 +89,10 @@ doubleCall op = todo
 --   3. return the result (of type b)
 
 compose :: (a -> IO b) -> (c -> IO a) -> c -> IO b
-compose op1 op2 c = todo
+compose op1 op2 c = do
+    a <- op2 c
+    b <- op1 a
+    return b
 
 ------------------------------------------------------------------------------
 -- Ex 5: Reading lines from a file. The module System.IO defines
